@@ -31,5 +31,5 @@ npm run dev
 Open `http://localhost:5173`
 
 ## Architecture & Domain Documentation
-- [AI for AMS Detailed Documentation & Changes](./AI_FOR_AMS_DOCUMENTATION.md)
+- [AI for AMS Detailed Documentation & Changes](./documentation/AI_FOR_AMS_DOCUMENTATION.md)
 - [DEVELOPER_AND_AGENT_GUIDE.md](./DEVELOPER_AND_AGENT_GUIDE.md) for full architecture, data models, API contracts, design system tokens, and contributor rules.
