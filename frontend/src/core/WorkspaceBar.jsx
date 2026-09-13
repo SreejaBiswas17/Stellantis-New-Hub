@@ -56,19 +56,19 @@ export const DOMAIN_PERSONA_MAP = {
     role: 'Product Owner',
     userName: 'Product Owner',
     avatarLetter: 'P',
-    subtitle: 'GenAI Requirements Workbench, User Story Synthesizer & Epic Backlog Engine',
+    subtitle: 'Autonomous Driving Systems (L2+) • Release 4.2 Program • Decision Cockpit',
     platform: 'AD-PO',
-    shift: 'Sprint 42 Backlog Refinement | Active',
-    shiftProgress: '42%',
+    shift: 'Release 4.2 Program | Sprint 42',
+    shiftProgress: '88% Readiness',
     infoChips: [
-      { label: 'Sprint 42 — Backlog Refinement', dot: true, dotColor: '#8b5cf6', bg: 'var(--badge-purple-bg)', border: 'var(--badge-purple-border)', color: 'var(--badge-purple-text)' },
-      { label: '8 User Stories In Progress', dot: false, bg: 'var(--bg-subtle)', border: 'var(--border-color)', color: 'var(--text-primary)' },
-      { label: '3 Epics Active', dot: true, dotColor: '#f59e0b', bg: 'var(--badge-high-bg)', border: 'var(--badge-high-border)', color: 'var(--badge-high-text)' }
+      { label: '3 Critical Gated', dot: true, dotColor: '#ef4444', bg: 'var(--badge-high-bg)', border: 'rgba(239,68,68,0.3)', color: '#ef4444' },
+      { label: 'Release 4.2 Program', dot: true, dotColor: '#8b5cf6', bg: 'var(--badge-purple-bg)', border: 'var(--badge-purple-border)', color: 'var(--badge-purple-text)' },
+      { label: '20 Subscriptions Active', dot: true, dotColor: '#10b981', bg: 'var(--badge-success-bg)', border: 'var(--badge-success-border)', color: 'var(--badge-success-text)' }
     ],
-    statusText: 'BSpoke Application active workspace - 3 Epics - 8 User Stories - 3 Acceptance Criteria ready',
+    statusText: 'Autonomous Driving L2+ Workspace • Release 4.2 Program • 9 Decisions Pending Triage • 20 AI Subscriptions',
     kpis: [
-      { label: 'EPIC READINESS', value: '92%', color: 'var(--text-primary)' },
-      { label: 'SPRINT CAPACITY', value: '88%', color: '#10b981' }
+      { label: 'RELEASE READINESS', value: '88%', color: 'var(--text-primary)' },
+      { label: 'SAFETY COMPLIANCE', value: '96.4%', color: '#10b981' }
     ]
   }
 };

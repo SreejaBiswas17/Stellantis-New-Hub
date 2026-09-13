@@ -68,7 +68,7 @@ export default function App() {
         <NavigationTabs
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          inboxCount={selectedDomain === 'AI for AMS' ? 7 : 3}
+          inboxCount={selectedDomain === 'AI for AMS' ? 7 : (selectedDomain === 'AI for AD' ? 9 : 3)}
         />
 
         {/* DOMAIN ROUTING WITH BOUNDARY ISOLATION */}
@@ -90,7 +90,7 @@ export default function App() {
         )}
 
         {selectedDomain === 'AI for AD' && (
-          <AiForAdDomain activeTab={activeTab} />
+          <AiForAdDomain activeTab={activeTab} onTabChange={setActiveTab} selectedRole={selectedRole} />
         )}
       </main>
 

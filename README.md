@@ -6,11 +6,11 @@
 A unified experience for governing, discovering, subscribing to, and operationalizing AI across software engineering and IT operations at Stellantis.
 
 ## Personas
-| Domain | Persona | Developer |
-|--------|---------|-----------|
-| AI for AMS | Tony — Head of AMS | Vishnu |
-| Engineering Leaders | Alex — Chief AI Officer | Sreeja |
-| AI for AD | Product Owner | Lavanya |
+| Domain | Persona | Role |
+|--------|---------|------|
+| AI for AMS | Tony | Head of AMS |
+| Engineering Leaders | Alex | Chief AI Officer |
+| AI for AD | Carl Weber | Product Owner |
 
 ## Quick Start
 
