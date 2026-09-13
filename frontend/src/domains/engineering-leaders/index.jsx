@@ -4,11 +4,9 @@ import { Cpu, ShieldCheck, GitBranch, Layers, ArrowRight } from 'lucide-react';
 /**
  * Domain Module: Engineering Leaders
  * Persona: Alex - Chief AI Officer / Head of Software Engineering
- * Lead Developer: Sreeja
  * 
  * IMPORTANT ARCHITECTURE NOTE:
  * This domain is isolated from AI for AMS and AI for AD to ensure zero merge conflicts.
- * Sreeja can build her Dashboard, Workflow Inbox, and Experience Zone inside this directory.
  */
 export default function EngineeringLeadersDomain({ activeTab }) {
   return (
@@ -32,7 +30,7 @@ export default function EngineeringLeadersDomain({ activeTab }) {
           Engineering Leaders Workspace (Alex • Chief AI Officer)
         </h2>
         <p style={{ maxWidth: '600px', margin: '8px auto 20px auto', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-          Assigned to <strong>Sreeja</strong>. This isolated module is configured for enterprise software engineering leadership, cross-portfolio AI model governance, architecture guardrails, and engineering outcomes.
+          This isolated module is configured for enterprise software engineering leadership, cross-portfolio AI model governance, architecture guardrails, and engineering outcomes.
         </p>
 
         <div style={{
@@ -66,7 +64,7 @@ export default function EngineeringLeadersDomain({ activeTab }) {
         </div>
 
         <div style={{ marginTop: '24px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-          Files located at: <code>frontend/src/domains/engineering-leaders/</code> &bull; Ready for Sreeja's implementation.
+          Files located at: <code>frontend/src/domains/engineering-leaders/</code>
         </div>
       </div>
     </div>

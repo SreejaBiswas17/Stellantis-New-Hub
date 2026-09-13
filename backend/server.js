@@ -17,13 +17,13 @@ app.use((req, res, next) => {
 });
 
 // Domain Routes Separation (Zero Merge Conflicts Architecture)
-// 1. Vishnu: AI for AMS (Tony - Head of AMS)
+// 1. AI for AMS (Tony - Head of AMS)
 app.use("/api/ams", amsRouter);
 
-// 2. Sreeja: Engineering Leaders (Alex - Chief AI Officer)
+// 2. Engineering Leaders (Alex - Chief AI Officer)
 app.use("/api/engineering", engineeringRouter);
 
-// 3. Lavanya: AI for AD (Product Owner)
+// 3. AI for AD (Product Owner)
 app.use("/api/ad", adRouter);
 
 // Health check & hub metadata
@@ -32,9 +32,9 @@ app.get("/api/health", (req, res) => {
     status: "healthy",
     application: "AI-Native Engineering Operating Model Hub",
     activeDomains: [
-      { id: "ai-for-ams", name: "AI for AMS", owner: "Vishnu", persona: "Tony - Head of AMS", path: "/api/ams" },
-      { id: "engineering-leaders", name: "Engineering Leaders", owner: "Sreeja", persona: "Alex - Chief AI Officer", path: "/api/engineering" },
-      { id: "ai-for-ad", name: "AI for AD", owner: "Lavanya", persona: "Product Owner", path: "/api/ad" }
+      { id: "ai-for-ams", name: "AI for AMS", owner: "Tony", persona: "Tony - Head of AMS", path: "/api/ams" },
+      { id: "engineering-leaders", name: "Engineering Leaders", owner: "Alex", persona: "Alex - Chief AI Officer", path: "/api/engineering" },
+      { id: "ai-for-ad", name: "AI for AD", owner: "Product Owner", persona: "Product Owner", path: "/api/ad" }
     ],
     timestamp: new Date().toISOString()
   });

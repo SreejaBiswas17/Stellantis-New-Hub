@@ -21,7 +21,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         boxSizing: 'border-box'
       }}>
         {/* Left Title & Tagline */}
-        <div style={{ flex: '1 1 auto', minWidth: '300px' }}>
+        <div style={{ flex: '1 1 auto', minWidth: '300px', maxWidth: '500px' }}>
           <h1 style={{
             fontSize: '1.25rem',
             fontWeight: 700,
@@ -40,22 +40,24 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
             fontSize: '0.83rem',
             color: 'var(--text-muted)',
             marginTop: '3px',
-            margin: 0
+            margin: 0,
+            lineHeight: 1.4
           }}>
             {persona.subtitle}
           </p>
         </div>
 
-        {/* Right Section: Metadata & Info Chips Pinned to the Far Right */}
+        {/* Right Section: 2-Tier Stack (Metadata on top, Info Chips directly underneath) */}
         <div style={{
           display: 'flex',
-          alignItems: 'center',
-          gap: '24px',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '12px',
           flexShrink: 0,
           marginLeft: 'auto'
         }}>
-          {/* Metadata items */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexShrink: 0 }}>
+          {/* Row 1: Platform | Shift | Shift Progress */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
             <div>
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Platform</div>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{persona.platform}</div>
@@ -74,16 +76,15 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Shift Progress</div>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{persona.shiftProgress}</div>
             </div>
+
+            <div style={{ width: '1px', height: '26px', background: 'var(--border-color)' }} />
           </div>
 
-          <div style={{ width: '1px', height: '30px', background: 'var(--border-color)' }} />
-
-          {/* Context Info Chips — Pinned to the FAR RIGHT */}
+          {/* Row 2: Info Chips horizontally in a row */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            flexShrink: 0
+            gap: '8px'
           }}>
             {persona.infoChips && persona.infoChips.map((chip, i) => (
               <div key={i} style={{
@@ -93,13 +94,23 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
                 background: chip.bg || 'var(--bg-subtle)',
                 border: `1px solid ${chip.border || 'var(--border-color)'}`,
                 borderRadius: 'var(--radius-full)',
-                padding: '6px 14px',
+                padding: '5px 14px',
                 fontSize: '0.78rem',
                 fontWeight: 700,
                 color: chip.color || 'var(--text-primary)',
                 whiteSpace: 'nowrap'
               }}>
-                {chip.dot && <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: chip.dotColor || '#10b981', boxShadow: `0 0 6px ${chip.dotColor || '#10b981'}`, display: 'inline-block', flexShrink: 0 }} />}
+                {chip.dot && (
+                  <span style={{
+                    width: '7px',
+                    height: '7px',
+                    borderRadius: '50%',
+                    background: chip.dotColor || '#10b981',
+                    boxShadow: `0 0 6px ${chip.dotColor || '#10b981'}`,
+                    display: 'inline-block',
+                    flexShrink: 0
+                  }} />
+                )}
                 {chip.label}
               </div>
             ))}
