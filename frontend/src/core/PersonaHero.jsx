@@ -1,7 +1,9 @@
 import React from 'react';
 import { DOMAIN_PERSONA_MAP } from './WorkspaceBar';
+import { useAuth } from '../auth/AuthContext';
 
 export default function PersonaHero({ selectedDomain, selectedRole }) {
+  const { user } = useAuth();
   const persona = DOMAIN_PERSONA_MAP[selectedDomain] || DOMAIN_PERSONA_MAP['AI for AMS'];
 
   return (
@@ -129,7 +131,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
       }}>
         <div>
           <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-            Good morning, {persona.userName}
+            Good morning, {user?.full_name?.split(' ')[0] || 'User'}
           </h2>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '2px' }}>
             {persona.statusText}

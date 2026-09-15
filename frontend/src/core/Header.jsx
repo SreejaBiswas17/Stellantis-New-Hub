@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Moon, ChevronDown, ShieldCheck, UserCheck } from 'lucide-react';
+import { useAuth } from '../auth/AuthContext';
 
 const isLight = (theme) => theme === 'light';
 
 export default function Header({ currentTheme, toggleTheme, activePersona }) {
+  const { user, logout } = useAuth();
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const light = isLight(currentTheme);
@@ -130,10 +132,10 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
               color: '#ffffff', display: 'flex', alignItems: 'center',
               justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem', flexShrink: 0
             }}>
-              {activePersona.avatarLetter || 'T'}
+              {(user?.full_name || 'U').charAt(0).toUpperCase()}
             </div>
             <div style={{ lineHeight: 1.2 }}>
-              <div style={{ fontWeight: 700, fontSize: '0.85rem', color: nameColor }}>{activePersona.userName}</div>
+              <div style={{ fontWeight: 700, fontSize: '0.85rem', color: nameColor }}>{user?.full_name || 'User'}</div>
               <div style={{ fontSize: '0.68rem', color: roleColor, whiteSpace: 'nowrap' }}>
                 {activePersona.role} • {activePersona.domain}
               </div>
@@ -150,17 +152,35 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
             }}>
               <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border-color)' }}>
                 <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '2px' }}>Current Session</div>
-                <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-primary)' }}>{activePersona.userName}</div>
-                <div style={{ fontSize: '0.75rem', color: light ? '#1a3a6e' : '#60a5fa', fontWeight: 600 }}>{activePersona.domain}</div>
+                <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-primary)' }}>{user?.full_name || 'User'}</div>
+                <div style={{ fontSize: '0.75rem', color: light ? '#1a3a6e' : '#60a5fa', fontWeight: 600 }}>{user?.email}</div>
               </div>
-              <div style={{ padding: '6px 0' }}>
-                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', padding: '6px 14px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Role Authorization</div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 14px', fontSize: '0.8rem', color: 'var(--text-primary)' }}>
-                  <ShieldCheck size={14} color="#10b981" /> Tier-1 Incident Commander
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '6px 14px', fontSize: '0.8rem', color: 'var(--text-primary)' }}>
-                  <UserCheck size={14} color="#10b981" /> Architecture Change Approver
-                </div>
+              <div style={{ padding: '4px' }}>
+                <button
+                  onClick={() => {
+                    setProfileDropdownOpen(false);
+                    logout();
+                  }}
+                  style={{
+                    width: '100%',
+                    textAlign: 'left',
+                    padding: '8px 10px',
+                    background: 'transparent',
+                    border: 'none',
+                    borderRadius: '6px',
+                    color: '#ef4444',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-subtle)' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}
+                >
+                  <UserCheck size={15} /> Sign Out
+                </button>
               </div>
             </div>
           )}

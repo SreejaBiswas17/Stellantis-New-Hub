@@ -11,10 +11,24 @@ import ExperienceZone from './domains/ai-for-ams/pages/ExperienceZone';
 import EngineeringLeadersDomain from './domains/engineering-leaders/index';
 import AiForAdDomain from './domains/ai-for-ad/index';
 
-export default function App() {
+// Auth
+import { AuthProvider, useAuth } from './auth/AuthContext';
+import LoginPage from './auth/LoginPage';
+import RegisterPage from './auth/RegisterPage';
+
+// ── Inner App — rendered only when user is authenticated
+function AuthenticatedApp() {
+  const { user, logout } = useAuth();
+
   const [theme, setTheme] = useState('light');
-  const [selectedDomain, setSelectedDomain] = useState('AI for AMS');
-  const [selectedRole, setSelectedRole] = useState('Head of AMS');
+  const [activeTab, setActiveTab] = useState('dashboard');
+
+  // Parse user's registered domains/roles
+  const allowedDomains = user?.domain ? user.domain.split(', ') : ['AI for AMS'];
+  const allowedRoles = user?.role ? user.role.split(', ') : ['Head of AMS'];
+
+  const [selectedDomain, setSelectedDomain] = useState(allowedDomains[0]);
+  const [selectedRole, setSelectedRole] = useState(allowedRoles[0]);
   const [activeTab, setActiveTab] = useState('dashboard');
 
   // Toggle theme and update data-theme attribute on document root
@@ -34,7 +48,13 @@ export default function App() {
     setActiveTab('dashboard');
     const persona = DOMAIN_PERSONA_MAP[domain];
     if (persona) {
-      setSelectedRole(persona.role);
+      // Find the first allowed role that belongs to this domain
+      const validRole = allowedRoles.find(r => DOMAIN_ROLE_MAP[domain]?.some(opt => opt.value === r || opt === r));
+      if (validRole) {
+        setSelectedRole(validRole);
+      } else {
+        setSelectedRole(persona.role); // Fallback
+      }
     }
   };
 
@@ -97,9 +117,34 @@ export default function App() {
           <AiForAdDomain activeTab={activeTab} onTabChange={setActiveTab} selectedRole={selectedRole} />
         )}
       </main>
-
-      {/* SEL Nexus and AI Assistant removed as per product requirements */}
-
     </div>
+  );
+}
+
+// ── Auth Gate ──
+function AuthGate() {
+  const { user, loading } = useAuth();
+  const [showRegister, setShowRegister] = useState(false);
+
+  if (loading) {
+    return <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading platform...</div>;
+  }
+
+  if (!user) {
+    if (showRegister) {
+      return <RegisterPage onNavigateToLogin={() => setShowRegister(false)} />;
+    }
+    return <LoginPage onNavigateToRegister={() => setShowRegister(true)} />;
+  }
+
+  return <AuthenticatedApp />;
+}
+
+// ── Main App Export ──
+export default function App() {
+  return (
+    <AuthProvider>
+      <AuthGate />
+    </AuthProvider>
   );
 }
