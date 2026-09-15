@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Cpu,
   Search,
@@ -20,18 +20,120 @@ import {
   Info
 } from 'lucide-react';
 
+// ── Facet Filter Constants (matched to engineering mockData fields) ────────────
+const ENG_CAPABILITIES = [
+  'Complex Code Synthesis & Architecture Blueprinting',
+  'High-Performance C++ & Rust AUTOSAR Synthesis',
+  'Diagnostic Reasoning & ECU Troubleshooting',
+  'Multimodal Vision & Driver Monitoring Validation',
+  'Multi-jurisdiction Homologation & Regulatory Compliance',
+  'Python Fleet Telemetry ETL & Battery Thermal Analytics',
+  'Ultra-Low Latency Embedded POSIX C Code Completion',
+  'Multilingual Cockpit Assistant & APAC Voice AI'
+];
+const ENG_DEPLOYMENTS = [
+  'Private VPC',
+  'Air-Gapped On-Premises',
+  'Dedicated Azure / Cloud Tenant',
+  'EU Sovereign Cloud',
+  'AWS Dedicated Cluster',
+  'Local / Edge'
+];
+const ENG_RISK_RATINGS = ['Low', 'Medium', 'High'];
+const ENG_PROVIDERS = [
+  'Anthropic',
+  'DeepSeek',
+  'Meta',
+  'OpenAI',
+  'Mistral AI',
+  'BigCode',
+  'Alibaba'
+];
+
+// Helper: normalize deploymentType string → facet bucket
+function getDeployBucket(deploymentType = '') {
+  const d = deploymentType.toLowerCase();
+  if (d.includes('air-gapped') || d.includes('on-premises') || d.includes('on-prem')) return 'Air-Gapped On-Premises';
+  if (d.includes('azure') || d.includes('fedram') || d.includes('government')) return 'Dedicated Azure / Cloud Tenant';
+  if (d.includes('eu sovereign') || d.includes('ovhcloud') || d.includes('paris') || d.includes('frankfurt') && d.includes('sovereign')) return 'EU Sovereign Cloud';
+  if (d.includes('aws') && (d.includes('dedicated') || d.includes('ec2'))) return 'AWS Dedicated Cluster';
+  if (d.includes('local') || d.includes('micro-edge') || d.includes('workstation') || d.includes('edge')) return 'Local / Edge';
+  if (d.includes('vpc') || d.includes('private')) return 'Private VPC';
+  return 'Private VPC';
+}
+
+// Helper: normalize provider string → facet bucket
+function getProviderBucket(provider = '') {
+  const p = provider.toLowerCase();
+  if (p.includes('anthropic')) return 'Anthropic';
+  if (p.includes('deepseek')) return 'DeepSeek';
+  if (p.includes('meta')) return 'Meta';
+  if (p.includes('openai') || p.includes('microsoft')) return 'OpenAI';
+  if (p.includes('mistral')) return 'Mistral AI';
+  if (p.includes('bigcode') || p.includes('starcoder')) return 'BigCode';
+  if (p.includes('alibaba') || p.includes('qwen')) return 'Alibaba';
+  return provider;
+}
+
 /**
  * PRD §5.3 — Model Catalogue
  * Enterprise Automotive Foundation Models
  */
 export default function EngineeringModelCatalogue({ models = [], onToggleSubscription, onOnboardModel, showToast }) {
   const [searchQuery, setSearchQuery] = useState('');
-  const [modelProviderFilter, setModelProviderFilter] = useState('All');
-  const [modelRiskFilter, setModelRiskFilter] = useState('All');
+  // Facet filter state (arrays = multi-select; empty = show all)
+  const [selectedCaps, setSelectedCaps] = useState([]);
+  const [selectedDeployments, setSelectedDeployments] = useState([]);
+  const [selectedRisks, setSelectedRisks] = useState([]);
+  const [selectedProviders, setSelectedProviders] = useState([]);
   const [compareList, setCompareList] = useState(['MOD-01', 'MOD-02']);
   const [showCompareModal, setShowCompareModal] = useState(false);
   const [showOnboardModal, setShowOnboardModal] = useState(false);
   const [selectedModelDetail, setSelectedModelDetail] = useState(null);
+
+  // Reset all facet filters
+  const handleResetFilters = () => {
+    setSearchQuery('');
+    setSelectedCaps([]);
+    setSelectedDeployments([]);
+    setSelectedRisks([]);
+    setSelectedProviders([]);
+    if (showToast) showToast('Facet filters reset — showing all models');
+  };
+
+  // Dynamic count: how many models match all OTHER active facets + this value
+  const getDynamicCount = (facetCategory, value) => {
+    return models.filter(m => {
+      // Search
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const match = (m.name || '').toLowerCase().includes(q) ||
+          (m.capability || '').toLowerCase().includes(q) ||
+          (m.provider || '').toLowerCase().includes(q) ||
+          (m.deploymentType || '').toLowerCase().includes(q);
+        if (!match) return false;
+      }
+      // Cross-filter: Capability
+      if (facetCategory === 'capability') {
+        if (m.capability !== value) return false;
+      } else if (selectedCaps.length > 0 && !selectedCaps.includes(m.capability)) return false;
+      // Cross-filter: Deployment
+      const bucket = getDeployBucket(m.deploymentType);
+      if (facetCategory === 'deployment') {
+        if (bucket !== value) return false;
+      } else if (selectedDeployments.length > 0 && !selectedDeployments.includes(bucket)) return false;
+      // Cross-filter: Risk
+      if (facetCategory === 'risk') {
+        if (m.riskRating !== value) return false;
+      } else if (selectedRisks.length > 0 && !selectedRisks.includes(m.riskRating)) return false;
+      // Cross-filter: Provider
+      const provBucket = getProviderBucket(m.provider);
+      if (facetCategory === 'provider') {
+        if (provBucket !== value) return false;
+      } else if (selectedProviders.length > 0 && !selectedProviders.includes(provBucket)) return false;
+      return true;
+    }).length;
+  };
 
   // Auto-filled presets so user doesn't have to write anything manually
   const ONBOARD_PRESETS = [
@@ -96,18 +198,29 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
     setOnboardForm(ONBOARD_PRESETS[0]);
   };
 
-  const filteredModels = models.filter(m => {
-    const q = searchQuery.toLowerCase();
-    const matchesSearch = !searchQuery ||
-      (m.name || '').toLowerCase().includes(q) ||
-      (m.capability || '').toLowerCase().includes(q) ||
-      (m.provider || '').toLowerCase().includes(q) ||
-      (m.modality || '').toLowerCase().includes(q) ||
-      (m.supportedUseCases || []).some(u => u.toLowerCase().includes(q));
-    const matchesProvider = modelProviderFilter === 'All' || m.provider.toLowerCase().includes(modelProviderFilter.toLowerCase());
-    const matchesRisk = modelRiskFilter === 'All' || m.riskRating.toLowerCase() === modelRiskFilter.toLowerCase();
-    return matchesSearch && matchesProvider && matchesRisk;
-  });
+  // Filtered models using all facets
+  const filteredModels = useMemo(() => {
+    return models.filter(m => {
+      const q = searchQuery.toLowerCase();
+      if (searchQuery.trim()) {
+        const match = (m.name || '').toLowerCase().includes(q) ||
+          (m.capability || '').toLowerCase().includes(q) ||
+          (m.provider || '').toLowerCase().includes(q) ||
+          (m.modality || '').toLowerCase().includes(q) ||
+          (m.deploymentType || '').toLowerCase().includes(q) ||
+          (m.supportedUseCases || []).some(u => u.toLowerCase().includes(q));
+        if (!match) return false;
+      }
+      if (selectedCaps.length > 0 && !selectedCaps.includes(m.capability)) return false;
+      if (selectedDeployments.length > 0 && !selectedDeployments.includes(getDeployBucket(m.deploymentType))) return false;
+      if (selectedRisks.length > 0 && !selectedRisks.includes(m.riskRating)) return false;
+      if (selectedProviders.length > 0 && !selectedProviders.includes(getProviderBucket(m.provider))) return false;
+      return true;
+    });
+  }, [models, searchQuery, selectedCaps, selectedDeployments, selectedRisks, selectedProviders]);
+
+  const hasActiveFilters = selectedCaps.length > 0 || selectedDeployments.length > 0 ||
+    selectedRisks.length > 0 || selectedProviders.length > 0 || searchQuery.trim() !== '';
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -117,7 +230,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
           <Search size={16} color="var(--text-muted)" style={{ position: 'absolute', left: '12px', top: '11px' }} />
           <input
             type="text"
-            placeholder="Search models by provider, capability, modality, use case..."
+            placeholder="Search models by provider, capability, deployment, use case..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
@@ -134,19 +247,6 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
         </div>
 
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <select
-            value={modelProviderFilter}
-            onChange={(e) => setModelProviderFilter(e.target.value)}
-            style={{ padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-primary)' }}
-          >
-            <option value="All">All Providers</option>
-            <option value="Anthropic">Anthropic</option>
-            <option value="DeepSeek">DeepSeek</option>
-            <option value="Meta">Meta</option>
-            <option value="OpenAI">OpenAI</option>
-            <option value="Mistral">Mistral</option>
-          </select>
-
           <button
             onClick={() => setShowCompareModal(true)}
             className="st-btn st-btn-outline"
@@ -165,8 +265,140 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
         </div>
       </div>
 
-      {/* Model Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px' }}>
+      {/* Browse Layout: Facet Sidebar + Model Cards */}
+      <div className="eng-models-browse-layout">
+
+        {/* ── Left Facet Filter Aside ──────────────────────────────────── */}
+        <aside className="eng-models-facet-aside">
+          <div className="eng-facet-header">
+            <div className="eng-facet-title">
+              <Filter size={13} />
+              <span>Facet Filters</span>
+            </div>
+            <button onClick={handleResetFilters} className="eng-facet-reset-btn">
+              Reset All
+            </button>
+          </div>
+
+          {/* 1. Capability */}
+          <div className="eng-facet-section">
+            <div className="eng-facet-section-header">Capability</div>
+            <div className="eng-facet-options">
+              {ENG_CAPABILITIES.map(cap => {
+                const count = getDynamicCount('capability', cap);
+                const checked = selectedCaps.includes(cap);
+                return (
+                  <label key={cap} className={`eng-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                    <div className="eng-facet-label-left">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedCaps([...selectedCaps, cap]);
+                          else setSelectedCaps(selectedCaps.filter(c => c !== cap));
+                        }}
+                      />
+                      <span>{cap}</span>
+                    </div>
+                    <span className="eng-facet-count">{count}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 2. Deployment Type */}
+          <div className="eng-facet-section">
+            <div className="eng-facet-section-header">Deployment Type</div>
+            <div className="eng-facet-options">
+              {ENG_DEPLOYMENTS.map(dep => {
+                const count = getDynamicCount('deployment', dep);
+                const checked = selectedDeployments.includes(dep);
+                return (
+                  <label key={dep} className={`eng-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                    <div className="eng-facet-label-left">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedDeployments([...selectedDeployments, dep]);
+                          else setSelectedDeployments(selectedDeployments.filter(d => d !== dep));
+                        }}
+                      />
+                      <span>{dep}</span>
+                    </div>
+                    <span className="eng-facet-count">{count}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 3. Risk Rating */}
+          <div className="eng-facet-section">
+            <div className="eng-facet-section-header">Risk Rating</div>
+            <div className="eng-facet-options">
+              {ENG_RISK_RATINGS.map(risk => {
+                const count = getDynamicCount('risk', risk);
+                const checked = selectedRisks.includes(risk);
+                return (
+                  <label key={risk} className={`eng-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                    <div className="eng-facet-label-left">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedRisks([...selectedRisks, risk]);
+                          else setSelectedRisks(selectedRisks.filter(r => r !== risk));
+                        }}
+                      />
+                      <span>{risk} Risk</span>
+                    </div>
+                    <span className="eng-facet-count">{count}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* 4. Provider */}
+          <div className="eng-facet-section">
+            <div className="eng-facet-section-header">Provider</div>
+            <div className="eng-facet-options">
+              {ENG_PROVIDERS.map(prov => {
+                const count = getDynamicCount('provider', prov);
+                const checked = selectedProviders.includes(prov);
+                return (
+                  <label key={prov} className={`eng-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                    <div className="eng-facet-label-left">
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedProviders([...selectedProviders, prov]);
+                          else setSelectedProviders(selectedProviders.filter(p => p !== prov));
+                        }}
+                      />
+                      <span>{prov}</span>
+                    </div>
+                    <span className="eng-facet-count">{count}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </div>
+
+        </aside>
+
+        {/* ── Right: Model Cards Grid ──────────────────────────────────── */}
+        <div className="eng-models-main-area">
+          {hasActiveFilters && (
+            <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Filter size={12} />
+              Showing <strong style={{ color: 'var(--text-primary)' }}>{filteredModels.length}</strong> of {models.length} models
+            </div>
+          )}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
         {filteredModels.map((model) => {
           const isCompared = compareList.includes(model.id);
 
@@ -297,7 +529,12 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
             </div>
           );
         })}
+        </div>
+        {/* End model cards grid */}
+        </div>
+        {/* End main area */}
       </div>
+      {/* End browse layout */}
 
       {/* =========================================================================
           MODAL 1: SIDE-BY-SIDE MODEL COMPARISON MODAL (UP TO 3 MODELS)
