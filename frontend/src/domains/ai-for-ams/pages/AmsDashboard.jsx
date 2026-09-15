@@ -30,7 +30,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
 
   // Fetch from backend if available, fallback to mock data
   useEffect(() => {
-    fetch('http://localhost:5000/api/ams/dashboard')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/dashboard`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) {

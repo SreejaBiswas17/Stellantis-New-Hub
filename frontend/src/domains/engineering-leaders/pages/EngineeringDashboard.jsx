@@ -42,7 +42,7 @@ export default function EngineeringDashboard() {
   // Fetch from backend API if available, fallback gracefully to mockData
   const fetchData = () => {
     setLoading(true);
-    fetch('http://localhost:5000/api/engineering/dashboard')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/dashboard`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) {
@@ -70,7 +70,7 @@ export default function EngineeringDashboard() {
   const handleExceptionAction = (actionType) => {
     if (!selectedException) return;
 
-    fetch(`http://localhost:5000/api/engineering/exceptions/${selectedException.id}/action`, {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/exceptions/${selectedException.id}/action`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

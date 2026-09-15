@@ -30,7 +30,7 @@ export default function AdDashboard() {
 
   // Fetch real-time data from backend on mount, with graceful local fallback
   useEffect(() => {
-    fetch('http://localhost:5000/api/ad/dashboard')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ad/dashboard`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error ${res.status}`);
         return res.json();
@@ -56,7 +56,7 @@ export default function AdDashboard() {
   // Toggle Synthetic Emulator Mitigation (Card 7)
   const handleToggleMitigation = () => {
     setIsSubmitting(true);
-    fetch('http://localhost:5000/api/ad/apply-mitigation', { method: 'POST' })
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ad/apply-mitigation`, { method: 'POST' })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error ${res.status}`);
         return res.json();
@@ -94,7 +94,7 @@ export default function AdDashboard() {
 
   // Apply Release Simulation (Card 5)
   const handleApplySimulation = ({ grantWaiver, injectSyntheticData, simulatedScore }) => {
-    fetch('http://localhost:5000/api/ad/simulate-release', {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ad/simulate-release`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ grantWaiver, injectSyntheticData })
@@ -130,7 +130,7 @@ export default function AdDashboard() {
 
   // Auto-Enhance Story via AI Story Doctor (Card 6)
   const handleApplyStoryEnhancement = () => {
-    fetch('http://localhost:5000/api/ad/auto-enhance-backlog', { method: 'POST' })
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ad/auto-enhance-backlog`, { method: 'POST' })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error ${res.status}`);
         return res.json();

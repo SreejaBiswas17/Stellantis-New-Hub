@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './core/Header';
-import WorkspaceBar, { DOMAIN_PERSONA_MAP } from './core/WorkspaceBar';
+import WorkspaceBar, { DOMAIN_PERSONA_MAP, DOMAIN_ROLE_MAP } from './core/WorkspaceBar';
 import PersonaHero from './core/PersonaHero';
 import NavigationTabs from './core/NavigationTabs';
 
@@ -21,14 +21,35 @@ function AuthenticatedApp() {
   const { user, logout } = useAuth();
 
   const [theme, setTheme] = useState('light');
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState(() => {
+    return sessionStorage.getItem('stellantis_active_tab') || 'dashboard';
+  });
 
   // Parse user's registered domains/roles
   const allowedDomains = user?.domain ? user.domain.split(', ') : ['AI for AMS'];
   const allowedRoles = user?.role ? user.role.split(', ') : ['Head of AMS'];
 
-  const [selectedDomain, setSelectedDomain] = useState(allowedDomains[0]);
-  const [selectedRole, setSelectedRole] = useState(allowedRoles[0]);
+  const [selectedDomain, setSelectedDomain] = useState(() => {
+    const saved = sessionStorage.getItem('stellantis_domain');
+    return saved && allowedDomains.includes(saved) ? saved : allowedDomains[0];
+  });
+  
+  const [selectedRole, setSelectedRole] = useState(() => {
+    const saved = sessionStorage.getItem('stellantis_role');
+    return saved && allowedRoles.includes(saved) ? saved : allowedRoles[0];
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem('stellantis_active_tab', activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    sessionStorage.setItem('stellantis_domain', selectedDomain);
+  }, [selectedDomain]);
+
+  useEffect(() => {
+    sessionStorage.setItem('stellantis_role', selectedRole);
+  }, [selectedRole]);
 
 
   // Toggle theme and update data-theme attribute on document root

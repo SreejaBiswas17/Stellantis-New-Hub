@@ -51,7 +51,7 @@ export default function ExperienceZone() {
   const [showOnboardModal, setShowOnboardModal] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/ams/experience')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/experience`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) {
@@ -113,7 +113,7 @@ export default function ExperienceZone() {
       };
     });
 
-    fetch(`http://localhost:5000/api/ams/experience/models/${modelId}/subscription`, {
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/experience/models/${modelId}/subscription`, {
       method: 'POST'
     }).catch(() => {});
   };
@@ -147,7 +147,7 @@ export default function ExperienceZone() {
     const fallbackOutcome = 'Incident prevented before customer impact. MTTD: 0.4s | MTTR: 4.8s';
 
     try {
-      const res = await fetch('http://localhost:5000/api/ams/experience/simulate', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/experience/simulate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ scenario: 'Kafka Partition Storm & Auto-Scale' })
@@ -337,7 +337,7 @@ export default function ExperienceZone() {
               <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginRight: '4px' }}>
                 Provider:
               </span>
-              {['All', 'Meta', 'Anthropic', 'Oracle', 'Stellantis AI Labs'].map((prov) => (
+              {['All', 'Anthropic', 'Google', 'DeepSeek', 'OpenAI', 'Meta', 'Mistral'].map((prov) => (
                 <button
                   key={prov}
                   onClick={() => setModelProviderFilter(prov)}

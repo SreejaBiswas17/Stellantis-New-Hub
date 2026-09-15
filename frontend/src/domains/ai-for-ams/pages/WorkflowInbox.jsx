@@ -32,7 +32,7 @@ export default function WorkflowInbox() {
 
   // Fetch from backend if available
   useEffect(() => {
-    fetch('http://localhost:5000/api/ams/workflows')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/workflows`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) {
@@ -129,7 +129,7 @@ export default function WorkflowInbox() {
     if (!selectedItem) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/ams/workflows/${selectedItem.id}/action`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/workflows/${selectedItem.id}/action`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: actionType, comments: decisionNotes || `Action executed by Tony (Head of AMS)` })

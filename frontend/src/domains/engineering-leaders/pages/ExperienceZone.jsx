@@ -43,7 +43,7 @@ export default function ExperienceZone() {
 
   // Fetch backend data if available, fallback gracefully to mockData
   useEffect(() => {
-    fetch('http://localhost:5000/api/engineering/experience')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) {
@@ -72,7 +72,7 @@ export default function ExperienceZone() {
 
     const nextSubscribed = !target.subscribed;
     try {
-      await fetch(`http://localhost:5000/api/engineering/experience/models/${modelId}/subscription`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience/models/${modelId}/subscription`, {
         method: 'POST'
       });
     } catch (e) {}
@@ -112,7 +112,7 @@ export default function ExperienceZone() {
   // Model Onboarding Submission
   const handleOnboardModel = async (formData) => {
     try {
-      const res = await fetch('http://localhost:5000/api/engineering/experience/models/onboard', {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience/models/onboard`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -162,7 +162,7 @@ export default function ExperienceZone() {
     const nextSubscribed = explicitState !== undefined ? explicitState : !targetAgent.subscribed;
 
     try {
-      await fetch(`http://localhost:5000/api/engineering/experience/agents/${agentId}/subscribe`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience/agents/${agentId}/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ projectName, subscribed: nextSubscribed, permissionTier: 'Project Level' })
@@ -217,7 +217,7 @@ export default function ExperienceZone() {
 
     const nextSubscribed = !targetTool.subscribed;
     try {
-      await fetch(`http://localhost:5000/api/engineering/experience/tools/${toolId}/subscribe`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience/tools/${toolId}/subscribe`, {
         method: 'POST'
       });
     } catch (e) {}
@@ -255,7 +255,7 @@ export default function ExperienceZone() {
   // Subscription Action (Renew, Cancel)
   const handleSubscriptionAction = async (subId, actionType) => {
     try {
-      await fetch(`http://localhost:5000/api/engineering/experience/subscriptions/${subId}/action`, {
+      await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/experience/subscriptions/${subId}/action`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: actionType })

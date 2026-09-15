@@ -38,7 +38,7 @@ export default function WorkflowInbox() {
 
   // Fetch from backend API if available, fallback to mockData
   useEffect(() => {
-    fetch('http://localhost:5000/api/engineering/workflows')
+    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/workflows`)
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data && json.data.length > 0) {
@@ -133,7 +133,7 @@ export default function WorkflowInbox() {
     const recordedComment = decisionNotes.trim() || (actionType === 'approve' ? 'Executive sign-off granted by Chief AI Officer.' : (actionType === 'reject' ? 'Proposal rejected by Chief AI Officer.' : 'Escalated to Executive Board.'));
 
     try {
-      const res = await fetch(`http://localhost:5000/api/engineering/workflows/${selectedItem.id}/action`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/engineering/workflows/${selectedItem.id}/action`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

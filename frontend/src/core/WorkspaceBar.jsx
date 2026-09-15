@@ -95,7 +95,7 @@ const DOMAIN_OPTIONS = [
 ];
 
 // Domain-scoped roles — to add a new role, push into the relevant domain's array
-const DOMAIN_ROLE_MAP = {
+export const DOMAIN_ROLE_MAP = {
   'Engineering leaders': [
     {
       value: 'Chief AI Officer',
@@ -350,8 +350,7 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
       {/* Left breadcrumb summary */}
       <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
         <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Active Workspace:</span>{' '}
-        Viewing as <strong style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{selectedRole}</strong> under{' '}
-        <strong style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{selectedDomain}</strong>
+        Viewing as <strong style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{selectedRole}</strong>
       </div>
 
       {/* Right Selector Dropdowns */}
