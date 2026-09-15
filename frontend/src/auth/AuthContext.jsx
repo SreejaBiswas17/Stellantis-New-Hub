@@ -95,7 +95,7 @@ export function AuthProvider({ children }) {
       throw new Error('An account with this Employee ID already exists.');
     }
 
-    const { error } = await supabase
+    const { data, error } = await supabase
       .from('user_profiles')
       .insert({
         full_name: fullName.trim(),
@@ -105,6 +105,7 @@ export function AuthProvider({ children }) {
         domain,
         role,
         status: 'approved',
+        approved_at: new Date().toISOString(),
       })
       .select()
       .single();

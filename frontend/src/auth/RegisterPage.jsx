@@ -88,7 +88,7 @@ function PendingApprovalScreen({ profile, onBackToLogin }) {
     const delay = Math.floor(Math.random() * (40000 - 5000 + 1)) + 5000;
     
     const timer = setTimeout(() => {
-      saveSession(profile); // Auto login and redirect to platform
+      onBackToLogin(); // Redirect to login page instead of auto login
     }, delay);
     
     return () => clearTimeout(timer);
