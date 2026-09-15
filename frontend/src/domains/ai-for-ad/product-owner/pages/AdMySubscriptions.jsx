@@ -868,7 +868,7 @@ export default function AdMySubscriptions() {
           <div className="ad-subs-modal-card" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#fee2e2', color: '#dc2626', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--badge-critical-bg)', color: 'var(--badge-critical-text)', border: '1px solid var(--badge-critical-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <AlertTriangle size={18} />
                 </div>
                 <div>
@@ -885,7 +885,7 @@ export default function AdMySubscriptions() {
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
                 Are you sure you want to drop your subscription to <strong>{unsubModalItem.name}</strong> ({unsubModalItem.level} Scope)?
               </p>
-              <div style={{ padding: '10px', borderRadius: '8px', background: '#fef2f2', border: '1px solid #fecaca', color: '#991b1b', fontSize: '0.72rem' }}>
+              <div style={{ padding: '10px', borderRadius: '8px', background: 'var(--badge-critical-bg)', border: '1px solid var(--badge-critical-border)', color: 'var(--badge-critical-text)', fontSize: '0.72rem' }}>
                 <strong>Revocation Notice:</strong> Dropping this subscription will revoke associated API credentials, mute telemetry alert hooks, and notify the responsible squad lead.
               </div>
             </div>
@@ -914,7 +914,7 @@ export default function AdMySubscriptions() {
           <div className="ad-subs-modal-card" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--badge-info-bg)', color: 'var(--badge-info-text)', border: '1px solid var(--badge-info-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <TrendingUp size={18} />
                 </div>
                 <div>
@@ -955,7 +955,7 @@ export default function AdMySubscriptions() {
                 />
               </div>
 
-              <div style={{ padding: '8px 10px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+              <div style={{ padding: '8px 10px', borderRadius: '8px', background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
                 Requests under €10k portfolio threshold are auto-routed to your Lead Autonomous Driving Architect.
               </div>
             </div>
@@ -980,7 +980,7 @@ export default function AdMySubscriptions() {
           <div className="ad-subs-modal-card" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#fef3c7', color: '#d97706', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--badge-high-bg)', color: 'var(--badge-high-text)', border: '1px solid var(--badge-high-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <RefreshCw size={18} />
                 </div>
                 <div>
@@ -997,7 +997,7 @@ export default function AdMySubscriptions() {
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
                 Confirm annual renewal for <strong>{renewModalItem.name}</strong> ({renewModalItem.level} Scope).
               </p>
-              <div style={{ padding: '10px', borderRadius: '8px', background: '#fffbeb', border: '1px solid #fde68a', color: '#92400e', fontSize: '0.72rem' }}>
+              <div style={{ padding: '10px', borderRadius: '8px', background: 'var(--badge-high-bg)', border: '1px solid var(--badge-high-border)', color: 'var(--badge-high-text)', fontSize: '0.72rem' }}>
                 <strong>Renewal Term:</strong> Extends the 15-seat engineering tool license for an additional 12-month period funded by the L2+ Autonomous Systems Portfolio budget.
               </div>
             </div>

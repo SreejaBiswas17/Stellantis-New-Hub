@@ -857,7 +857,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                           <button
                             onClick={() => showToast(`Opening Governance Calibration & Drift Report for ${agent.name}`)}
                             className="ad-btn-passport"
-                            style={{ color: '#b91c1c', borderColor: '#fca5a5', background: '#fef2f2' }}
+                            style={{ color: 'var(--badge-critical-text)', borderColor: 'var(--badge-critical-border)', background: 'var(--badge-critical-bg)' }}
                           >
                             Audit Report
                           </button>
@@ -920,20 +920,20 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           <div className="ad-kanban-grid">
 
             {/* COLUMN 1: EXPERIMENTAL (2) */}
-            <div className="ad-kanban-column" style={{ borderColor: '#fde68a', background: '#fffdf5' }}>
-              <div className="ad-kanban-col-header" style={{ borderColor: '#fde68a' }}>
-                <div className="ad-kanban-col-title" style={{ color: '#92400e' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#f59e0b' }} />
+            <div className="ad-kanban-column ad-kanban-col-experimental">
+              <div className="ad-kanban-col-header">
+                <div className="ad-kanban-col-title">
+                  <span className="ad-kanban-dot-experimental" />
                   <span>EXPERIMENTAL</span>
                 </div>
-                <span className="ad-kanban-col-badge" style={{ background: '#fef3c7', color: '#92400e' }}>
+                <span className="ad-kanban-col-badge">
                   {agentsList.filter(a => a.lifecycleStage === 'Experimental').length}
                 </span>
               </div>
 
               <div className="ad-kanban-cards-stack">
                 {agentsList.filter(a => a.lifecycleStage === 'Experimental').map((agent) => (
-                  <div key={agent.id} className="ad-kanban-card" style={{ borderColor: '#fde68a' }}>
+                  <div key={agent.id} className="ad-kanban-card ad-kanban-card-experimental">
                     <div className="ad-kanban-card-top">
                       <span className="st-badge badge-warning" style={{ fontSize: '0.62rem' }}>
                         🔒 Needs Approval
@@ -944,7 +944,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
-                    <div className="ad-kanban-card-metric" style={{ background: '#fef3c7', color: '#92400e' }}>
+                    <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
                       <span>{agent.stamps[0].note}</span>
                     </div>
@@ -970,20 +970,20 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
             </div>
 
             {/* COLUMN 2: ACTIVE (2) */}
-            <div className="ad-kanban-column" style={{ borderColor: '#a7f3d0', background: '#f0fdf4' }}>
-              <div className="ad-kanban-col-header" style={{ borderColor: '#a7f3d0' }}>
-                <div className="ad-kanban-col-title" style={{ color: '#065f46' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }} />
+            <div className="ad-kanban-column ad-kanban-col-active">
+              <div className="ad-kanban-col-header">
+                <div className="ad-kanban-col-title">
+                  <span className="ad-kanban-dot-active" />
                   <span>ACTIVE IN PRODUCTION</span>
                 </div>
-                <span className="ad-kanban-col-badge" style={{ background: '#d1fae5', color: '#065f46' }}>
+                <span className="ad-kanban-col-badge">
                   {agentsList.filter(a => a.lifecycleStage === 'Active').length}
                 </span>
               </div>
 
               <div className="ad-kanban-cards-stack">
                 {agentsList.filter(a => a.lifecycleStage === 'Active').map((agent) => (
-                  <div key={agent.id} className="ad-kanban-card" style={{ borderColor: '#a7f3d0' }}>
+                  <div key={agent.id} className="ad-kanban-card ad-kanban-card-active">
                     <div className="ad-kanban-card-top">
                       <span className="st-badge badge-success" style={{ fontSize: '0.62rem' }}>
                         Active
@@ -994,9 +994,9 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
-                    <div className="ad-kanban-card-metric" style={{ background: '#ecfdf5', color: '#065f46' }}>
+                    <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
-                      <span style={{ color: '#10b981', fontWeight: 700 }}>{agent.stamps[0].note}</span>
+                      <span style={{ fontWeight: 700 }}>{agent.stamps[0].note}</span>
                     </div>
                     <div className="ad-kanban-card-actions">
                       <button
@@ -1020,20 +1020,20 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
             </div>
 
             {/* COLUMN 3: SUSPENDED (2) */}
-            <div className="ad-kanban-column" style={{ borderColor: '#fecaca', background: '#fff5f5' }}>
-              <div className="ad-kanban-col-header" style={{ borderColor: '#fecaca' }}>
-                <div className="ad-kanban-col-title" style={{ color: '#991b1b' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ef4444' }} />
+            <div className="ad-kanban-column ad-kanban-col-suspended">
+              <div className="ad-kanban-col-header">
+                <div className="ad-kanban-col-title">
+                  <span className="ad-kanban-dot-suspended" />
                   <span>SUSPENDED (DRIFT)</span>
                 </div>
-                <span className="ad-kanban-col-badge" style={{ background: '#fee2e2', color: '#991b1b' }}>
+                <span className="ad-kanban-col-badge">
                   {agentsList.filter(a => a.lifecycleStage === 'Suspended').length}
                 </span>
               </div>
 
               <div className="ad-kanban-cards-stack">
                 {agentsList.filter(a => a.lifecycleStage === 'Suspended').map((agent) => (
-                  <div key={agent.id} className="ad-kanban-card" style={{ borderColor: '#fecaca' }}>
+                  <div key={agent.id} className="ad-kanban-card ad-kanban-card-suspended">
                     <div className="ad-kanban-card-top">
                       <span className="st-badge badge-danger" style={{ fontSize: '0.62rem' }}>
                         Suspended
@@ -1044,7 +1044,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
-                    <div className="ad-kanban-card-metric" style={{ background: '#fee2e2', color: '#991b1b' }}>
+                    <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
                       <span>{agent.stamps[0].note}</span>
                     </div>
@@ -1070,20 +1070,20 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
             </div>
 
             {/* COLUMN 4: RETIRED ARCHIVE (2) */}
-            <div className="ad-kanban-column" style={{ borderColor: '#cbd5e1', background: '#f8fafc' }}>
-              <div className="ad-kanban-col-header" style={{ borderColor: '#cbd5e1' }}>
-                <div className="ad-kanban-col-title" style={{ color: '#475569' }}>
-                  <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#94a3b8' }} />
+            <div className="ad-kanban-column ad-kanban-col-retired">
+              <div className="ad-kanban-col-header">
+                <div className="ad-kanban-col-title">
+                  <span className="ad-kanban-dot-retired" />
                   <span>RETIRED ARCHIVE</span>
                 </div>
-                <span className="ad-kanban-col-badge" style={{ background: '#e2e8f0', color: '#475569' }}>
+                <span className="ad-kanban-col-badge">
                   {agentsList.filter(a => a.lifecycleStage === 'Retired').length}
                 </span>
               </div>
 
               <div className="ad-kanban-cards-stack">
                 {agentsList.filter(a => a.lifecycleStage === 'Retired').map((agent) => (
-                  <div key={agent.id} className="ad-kanban-card" style={{ borderColor: '#cbd5e1', opacity: 0.85 }}>
+                  <div key={agent.id} className="ad-kanban-card ad-kanban-card-retired">
                     <div className="ad-kanban-card-top">
                       <span className="st-badge badge-secondary" style={{ fontSize: '0.62rem' }}>
                         Archived
@@ -1094,7 +1094,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
-                    <div className="ad-kanban-card-metric" style={{ background: '#f1f5f9', color: '#475569' }}>
+                    <div className="ad-kanban-card-metric">
                       <span>Decommissioned:</span>
                       <strong>{agent.stamps[0].val}</strong>
                     </div>
@@ -1226,7 +1226,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           <div className="ad-agent-modal-card" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#eef2ff', color: '#4338ca', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--badge-info-bg)', color: 'var(--badge-info-text)', border: '1px solid var(--badge-info-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Bot size={18} />
                 </div>
                 <div>
@@ -1259,7 +1259,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                 </select>
               </div>
 
-              <div style={{ padding: '10px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+              <div style={{ padding: '10px', borderRadius: '8px', background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
                 <strong>Inheritance Policy:</strong> Agent quotas and runtime tokens are automatically inherited from your Product Manager portfolio allotment.
               </div>
             </div>
@@ -1331,7 +1331,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                 </div>
               </div>
 
-              <div style={{ padding: '8px', borderRadius: '8px', background: '#f8fafc', border: '1px solid #e2e8f0', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+              <div style={{ padding: '8px', borderRadius: '8px', background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', fontSize: '0.7rem', color: 'var(--text-muted)' }}>
                 Registration creates an initial <strong>Candidate Passport</strong> and dispatches an ISO 26262 Tier 2 checklist request to Functional Safety.
               </div>
             </div>

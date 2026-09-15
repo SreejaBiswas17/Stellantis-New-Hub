@@ -606,3 +606,249 @@
   flex-direction: column;
   gap: 16px;
 }
+
+/* ==========================================================================
+   DARK THEME COMPATIBILITY OVERRIDES (PRD §5.6)
+   Automotive Canonical Navy Theme for My Subscriptions
+   ========================================================================== */
+
+[data-theme="dark"] .ad-subs-header-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-subs-header-icon {
+  background: #142442;
+  border: 1px solid #244080;
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .ad-subs-header-text h2 {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-header-text p {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-summary-strip {
+  background: #091322;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-subs-summary-label {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-controls-bar {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-subs-cat-chip {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-subs-cat-chip:hover {
+  background: #1e3562;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-subs-cat-chip.active {
+  background: #1e3a8a;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-subs-controls-row-2 {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-level-track {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-level-btn {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-level-btn:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-subs-level-btn.active {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: 1px solid #3b82f6;
+}
+
+[data-theme="dark"] .ad-subs-search-box {
+  background: #142442;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-subs-search-input {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-search-input::placeholder {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Subscription Cards in Dark Mode */
+[data-theme="dark"] .ad-sub-card {
+  background: #0d1a30;
+  border-color: #1d3460;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-sub-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-sub-card.expiring {
+  background: #1c1507;
+  border-color: #854d0e;
+}
+
+[data-theme="dark"] .ad-sub-card-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-sub-card-meta {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Corner Tags in Dark Mode */
+[data-theme="dark"] .ad-tag-individual {
+  background: #0f2040;
+  color: #60a5fa;
+  border-color: #1d3460;
+}
+
+[data-theme="dark"] .ad-tag-team {
+  background: #042f2e;
+  color: #2dd4bf;
+  border-color: #115e59;
+}
+
+[data-theme="dark"] .ad-tag-project {
+  background: #2e1065;
+  color: #c084fc;
+  border-color: #581c87;
+}
+
+[data-theme="dark"] .ad-tag-portfolio {
+  background: #291b05;
+  color: #fbbf24;
+  border-color: #78350f;
+}
+
+[data-theme="dark"] .ad-tag-enterprise {
+  background: #142442;
+  color: #e8f0ff;
+  border-color: #244080;
+}
+
+/* Card Body in Dark Mode */
+[data-theme="dark"] .ad-sub-card-body {
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-sub-body-label {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-sub-body-value {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-sub-expiring-badge {
+  background: #291b05;
+  color: #fde68a;
+  border-color: #78350f;
+}
+
+/* Card Actions in Dark Mode */
+[data-theme="dark"] .ad-btn-sub-action {
+  background: transparent;
+  border-color: #244080;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-btn-sub-action:hover {
+  background: #142442;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-btn-sub-upgrade {
+  background: #1e1b4b;
+  border-color: #4f46e5;
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .ad-btn-sub-upgrade:hover {
+  background: #312e81;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-sub-unsub {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-btn-sub-unsub:hover {
+  color: #f87171;
+  background: #2a0a0a;
+  border-color: #5c1a1a;
+}
+
+/* Slide Drawer & Modals in Dark Mode */
+[data-theme="dark"] .ad-subs-drawer-panel {
+  background: #0d1a30;
+  border-left-color: #244080;
+}
+
+[data-theme="dark"] .ad-subs-drawer-header {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-drawer-body {
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-drawer-section-title {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-burn-gauge {
+  background: #142442;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-burn-bar-track {
+  background: #091322;
+}
+
+[data-theme="dark"] .ad-subs-metric-box {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-modal-card {
+  background: #0d1a30;
+  border-color: #244080;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: var(--text-primary, #e8f0ff);
+}

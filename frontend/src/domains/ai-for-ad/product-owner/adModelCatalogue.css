@@ -847,3 +847,328 @@
   justify-content: flex-end;
   gap: 10px;
 }
+
+/* ==========================================================================
+   DARK THEME COMPATIBILITY OVERRIDES (PRD §5.3)
+   Automotive Canonical Navy Theme for Model Catalogue
+   ========================================================================== */
+
+[data-theme="dark"] .ad-models-header-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-models-header-icon {
+  background: #142442;
+  border: 1px solid #244080;
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .ad-models-subtab-track {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-models-subtab-btn {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-models-subtab-btn:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-models-subtab-btn.active {
+  background: #1e3a8a;
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-btn-onboard {
+  background: #1a3a6e;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-onboard:hover {
+  background: #2563eb;
+}
+
+/* Facet Aside in Dark Mode */
+[data-theme="dark"] .ad-models-facet-aside {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-facet-header {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-facet-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-facet-reset-btn {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .ad-facet-section-header {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-facet-options {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-facet-label:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-facet-count {
+  background: #162240;
+  color: var(--text-muted, #8ea8d0);
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-facet-label.is-checked {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .ad-facet-label.is-checked .ad-facet-count {
+  background: #1e3a8a;
+  color: #93c5fd;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-facet-select {
+  background: #142442;
+  border-color: #244080;
+  color: var(--text-primary, #e8f0ff);
+}
+
+/* Active Filters Bar in Dark Mode */
+[data-theme="dark"] .ad-active-filters-bar {
+  background: #0d1a30;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-filter-chip {
+  background: #142442;
+  border-color: #2563eb;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .ad-filter-chip button {
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .ad-filter-chip button:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-filter-chip-clear {
+  color: #f87171;
+}
+
+/* Search Bar in Dark Mode */
+[data-theme="dark"] .ad-models-search-bar {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-models-search-input {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-models-search-input::placeholder {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-models-meta-count {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Model Cards in Dark Mode */
+[data-theme="dark"] .ad-model-card {
+  background: #0d1a30;
+  border-color: #1d3460;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-model-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-model-card.restricted {
+  background: #101c36;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-model-title-row h3 {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-model-version-tag {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-model-desc {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-model-attrs-grid {
+  background: #142442;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-model-attr-label {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-model-attr-val {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-model-quota-info {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-model-quota-track {
+  background: #162240;
+}
+
+[data-theme="dark"] .ad-model-card-footer {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-btn-subscribe {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-subscribe:hover {
+  background: #0369a1;
+}
+
+[data-theme="dark"] .ad-btn-scope-modify {
+  background: #142442;
+  border-color: #2563eb;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] .ad-btn-scope-modify:hover {
+  background: #1e3a8a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-card-details {
+  background: transparent;
+  color: var(--text-secondary, #b8cde8);
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-btn-card-details:hover {
+  background: #142442;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+/* Compare Models Sub-tab */
+[data-theme="dark"] .ad-models-compare-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-compare-header {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-radar-legend-card {
+  background: #142442;
+  border: 1px solid #1e3562;
+}
+
+[data-theme="dark"] .ad-spec-table-wrap {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-spec-table th {
+  background: #142442;
+  color: var(--text-primary, #e8f0ff);
+  border-bottom: 1px solid #244080;
+}
+
+[data-theme="dark"] .ad-spec-table td {
+  border-bottom: 1px solid #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+/* Requests & Quotas Sub-tab */
+[data-theme="dark"] .ad-requests-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-req-pill {
+  background: #142442;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-req-pill.active {
+  background: #1e3a8a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-quota-gauge-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+/* Drawer & Modal Dialogs in Dark Mode */
+[data-theme="dark"] .ad-slide-drawer {
+  background: #0d1a30;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.6);
+  border-left: 1px solid #244080;
+}
+
+[data-theme="dark"] .ad-drawer-header {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-drawer-body {
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-drawer-section-title {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-modal-card {
+  background: #0d1a30;
+  border-color: #244080;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .ad-modal-header {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-modal-body {
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-modal-footer {
+  background: #091322;
+  border-color: #1e3562;
+}

@@ -768,6 +768,125 @@
   margin-top: 4px;
 }
 
+/* Column Specific Themes - Light Mode */
+.ad-kanban-col-experimental {
+  background: #fffdf5;
+  border-color: #fde68a;
+}
+.ad-kanban-col-experimental .ad-kanban-col-header {
+  border-color: #fde68a;
+}
+.ad-kanban-col-experimental .ad-kanban-col-title {
+  color: #92400e;
+}
+.ad-kanban-col-experimental .ad-kanban-col-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+.ad-kanban-card-experimental {
+  border-color: #fde68a;
+}
+.ad-kanban-col-experimental .ad-kanban-card-metric {
+  background: #fef3c7;
+  color: #92400e;
+}
+.ad-kanban-dot-experimental {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f59e0b;
+  flex-shrink: 0;
+}
+
+.ad-kanban-col-active {
+  background: #f0fdf4;
+  border-color: #a7f3d0;
+}
+.ad-kanban-col-active .ad-kanban-col-header {
+  border-color: #a7f3d0;
+}
+.ad-kanban-col-active .ad-kanban-col-title {
+  color: #065f46;
+}
+.ad-kanban-col-active .ad-kanban-col-badge {
+  background: #d1fae5;
+  color: #065f46;
+}
+.ad-kanban-card-active {
+  border-color: #a7f3d0;
+}
+.ad-kanban-col-active .ad-kanban-card-metric {
+  background: #ecfdf5;
+  color: #065f46;
+}
+.ad-kanban-dot-active {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  flex-shrink: 0;
+}
+
+.ad-kanban-col-suspended {
+  background: #fff5f5;
+  border-color: #fecaca;
+}
+.ad-kanban-col-suspended .ad-kanban-col-header {
+  border-color: #fecaca;
+}
+.ad-kanban-col-suspended .ad-kanban-col-title {
+  color: #991b1b;
+}
+.ad-kanban-col-suspended .ad-kanban-col-badge {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.ad-kanban-card-suspended {
+  border-color: #fecaca;
+}
+.ad-kanban-col-suspended .ad-kanban-card-metric {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.ad-kanban-dot-suspended {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+}
+
+.ad-kanban-col-retired {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  opacity: 0.9;
+}
+.ad-kanban-col-retired .ad-kanban-col-header {
+  border-color: #cbd5e1;
+}
+.ad-kanban-col-retired .ad-kanban-col-title {
+  color: #475569;
+}
+.ad-kanban-col-retired .ad-kanban-col-badge {
+  background: #e2e8f0;
+  color: #475569;
+}
+.ad-kanban-card-retired {
+  border-color: #cbd5e1;
+  opacity: 0.85;
+}
+.ad-kanban-col-retired .ad-kanban-card-metric {
+  background: #f1f5f9;
+  color: #475569;
+}
+.ad-kanban-dot-retired {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94a3b8;
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    DRAWER & MODALS
    ========================================================================== */
@@ -879,4 +998,436 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* ==========================================================================
+   DARK THEME COMPATIBILITY OVERRIDES (PRD §5.4)
+   Automotive Canonical Navy Theme for Agent & Workflow Catalogue
+   ========================================================================== */
+
+[data-theme="dark"] .ad-agents-header-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-agents-header-icon {
+  background: #142442;
+  border: 1px solid #244080;
+  color: #a5b4fc;
+}
+
+[data-theme="dark"] .ad-agents-subtab-track {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-agents-subtab-btn {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-agents-subtab-btn:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-agents-subtab-btn.active {
+  background: #1e3a8a;
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-btn-register {
+  background: #1a3a6e;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-register:hover {
+  background: #2563eb;
+}
+
+/* Facet Aside in Dark Mode */
+[data-theme="dark"] .ad-agents-facet-aside {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-agent-facet-header {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-agent-facet-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-facet-reset-btn {
+  color: #818cf8;
+}
+
+[data-theme="dark"] .ad-agent-facet-section-header {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-facet-options {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-agent-facet-label:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-agent-facet-count {
+  background: #162240;
+  color: var(--text-muted, #8ea8d0);
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-agent-facet-label.is-checked {
+  color: #a5b4fc;
+}
+
+[data-theme="dark"] .ad-agent-facet-label.is-checked .ad-agent-facet-count {
+  background: #312e81;
+  color: #c7d2fe;
+  border-color: #6366f1;
+}
+
+/* Active Filters Bar in Dark Mode */
+[data-theme="dark"] .ad-agent-active-filters-bar {
+  background: #0d1a30;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-agent-filter-chip {
+  background: #1e1b4b;
+  border-color: #4f46e5;
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .ad-agent-filter-chip button {
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .ad-agent-filter-chip button:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-agent-filter-chip-clear {
+  color: #f87171;
+}
+
+/* Search Bar in Dark Mode */
+[data-theme="dark"] .ad-agents-search-bar {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-agents-search-input {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agents-search-input::placeholder {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-agents-meta-count {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Agent Performance Passport Cards in Dark Mode */
+[data-theme="dark"] .ad-agent-card {
+  background: #0d1a30;
+  border-color: #1d3460;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-agent-card:hover {
+  border-color: #818cf8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-agent-card.experimental {
+  background: #18150a;
+  border-color: #854d0e;
+}
+
+[data-theme="dark"] .ad-agent-card.suspended {
+  background: #1c0f0f;
+  border-color: #991b1b;
+}
+
+[data-theme="dark"] .ad-agent-card.retired {
+  background: #0f172a;
+  border-color: #334155;
+  opacity: 0.8;
+}
+
+[data-theme="dark"] .ad-agent-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-desc {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-agent-notice-box.experimental {
+  background: #291b05;
+  border-color: #78350f;
+  color: #fde68a;
+}
+
+[data-theme="dark"] .ad-agent-notice-box.suspended {
+  background: #2e0909;
+  border-color: #7f1d1d;
+  color: #fecaca;
+}
+
+[data-theme="dark"] .ad-agent-notice-box.retired {
+  background: #142442;
+  border-color: #244080;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .ad-agent-stamp-matrix {
+  background: #142442;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-stamp-cell:not(:last-child) {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-stamp-label {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-stamp-val {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-deps-row {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-agent-card-actions {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-btn-passport {
+  background: transparent;
+  color: var(--text-secondary, #b8cde8);
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-btn-passport:hover {
+  background: #142442;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-btn-subscribe-agent {
+  background: #1e1b4b;
+  border-color: #4f46e5;
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .ad-btn-subscribe-agent:hover {
+  background: #312e81;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-log-link {
+  background: #142442;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-btn-log-link:hover {
+  background: #1e3a8a;
+}
+
+/* Kanban Board in Dark Mode */
+[data-theme="dark"] .ad-kanban-summary-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-kanban-column {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-kanban-col-header {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-kanban-card {
+  background: #0d1a30;
+  border-color: #1e3562;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-kanban-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-kanban-card-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-kanban-card-desc {
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-kanban-card-metric {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+/* Column Specific Themes - Dark Mode */
+[data-theme="dark"] .ad-kanban-col-experimental {
+  background: #141108;
+  border-color: #78350f;
+}
+[data-theme="dark"] .ad-kanban-col-experimental .ad-kanban-col-header {
+  border-color: #78350f;
+}
+[data-theme="dark"] .ad-kanban-col-experimental .ad-kanban-col-title {
+  color: #fbbf24;
+}
+[data-theme="dark"] .ad-kanban-col-experimental .ad-kanban-col-badge {
+  background: #271905;
+  color: #fde68a;
+  border: 1px solid #78350f;
+}
+[data-theme="dark"] .ad-kanban-card-experimental {
+  background: #0d1a30;
+  border-color: #78350f;
+}
+[data-theme="dark"] .ad-kanban-col-experimental .ad-kanban-card-metric {
+  background: #221503;
+  color: #fde68a;
+  border-color: #78350f;
+}
+
+[data-theme="dark"] .ad-kanban-col-active {
+  background: #081711;
+  border-color: #065f46;
+}
+[data-theme="dark"] .ad-kanban-col-active .ad-kanban-col-header {
+  border-color: #065f46;
+}
+[data-theme="dark"] .ad-kanban-col-active .ad-kanban-col-title {
+  color: #34d399;
+}
+[data-theme="dark"] .ad-kanban-col-active .ad-kanban-col-badge {
+  background: #04281a;
+  color: #6ee7b7;
+  border: 1px solid #065f46;
+}
+[data-theme="dark"] .ad-kanban-card-active {
+  background: #0d1a30;
+  border-color: #065f46;
+}
+[data-theme="dark"] .ad-kanban-col-active .ad-kanban-card-metric {
+  background: #052418;
+  color: #6ee7b7;
+  border-color: #065f46;
+}
+
+[data-theme="dark"] .ad-kanban-col-suspended {
+  background: #190909;
+  border-color: #7f1d1d;
+}
+[data-theme="dark"] .ad-kanban-col-suspended .ad-kanban-col-header {
+  border-color: #7f1d1d;
+}
+[data-theme="dark"] .ad-kanban-col-suspended .ad-kanban-col-title {
+  color: #f87171;
+}
+[data-theme="dark"] .ad-kanban-col-suspended .ad-kanban-col-badge {
+  background: #2a0b0b;
+  color: #fca5a5;
+  border: 1px solid #7f1d1d;
+}
+[data-theme="dark"] .ad-kanban-card-suspended {
+  background: #0d1a30;
+  border-color: #7f1d1d;
+}
+[data-theme="dark"] .ad-kanban-col-suspended .ad-kanban-card-metric {
+  background: #280a0a;
+  color: #fca5a5;
+  border-color: #7f1d1d;
+}
+
+[data-theme="dark"] .ad-kanban-col-retired {
+  background: #0d1a30;
+  border-color: #1e3562;
+}
+[data-theme="dark"] .ad-kanban-col-retired .ad-kanban-col-header {
+  border-color: #1e3562;
+}
+[data-theme="dark"] .ad-kanban-col-retired .ad-kanban-col-title {
+  color: #94a3b8;
+}
+[data-theme="dark"] .ad-kanban-col-retired .ad-kanban-col-badge {
+  background: #142442;
+  color: #cbd5e1;
+  border: 1px solid #1e3562;
+}
+[data-theme="dark"] .ad-kanban-card-retired {
+  background: #091322;
+  border-color: #1e3562;
+}
+[data-theme="dark"] .ad-kanban-col-retired .ad-kanban-card-metric {
+  background: #142442;
+  color: #b8cde8;
+  border-color: #1e3562;
+}
+
+/* Slide Drawer & Modals in Dark Mode */
+[data-theme="dark"] .ad-agent-drawer-panel {
+  background: #0d1a30;
+  border-left-color: #244080;
+}
+
+[data-theme="dark"] .ad-agent-drawer-header {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-agent-drawer-body {
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-drawer-section-title {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-agent-eval-item {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-agent-drawer-close-btn {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-agent-drawer-close-btn:hover {
+  background: #142442;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-agent-modal-card {
+  background: #0d1a30;
+  border-color: #244080;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: var(--text-primary, #e8f0ff);
 }

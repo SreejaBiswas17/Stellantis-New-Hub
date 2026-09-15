@@ -971,7 +971,7 @@ export default function AdModelCatalogue() {
 
                       {/* Restricted Governance Banner */}
                       {model.isRestricted && (
-                        <div style={{ marginTop: '10px', padding: '10px', borderRadius: '10px', background: '#fff1f2', border: '1px solid #fecdd3', fontSize: '0.7rem', color: '#9f1239', lineHeight: 1.4 }}>
+                        <div style={{ marginTop: '10px', padding: '10px', borderRadius: '10px', background: 'var(--badge-critical-bg)', border: '1px solid var(--badge-critical-border)', fontSize: '0.7rem', color: 'var(--badge-critical-text)', lineHeight: 1.4 }}>
                           <strong>Governance Gating Directive 2026-03:</strong> Egress prohibited pending EU Sovereign Data Residency audit. Cannot be deployed to vehicle firmware or safety-critical pipelines.
                         </div>
                       )}
@@ -1106,32 +1106,32 @@ export default function AdModelCatalogue() {
 
             {/* Empirical Synthesis Cards */}
             <div className="ad-radar-legend-list">
-              <div className="ad-radar-legend-card" style={{ background: '#eff6ff', border: '1px solid #bfdbfe' }}>
+              <div className="ad-radar-legend-card" style={{ background: 'var(--badge-info-bg)', border: '1px solid var(--badge-info-border)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <strong style={{ color: '#1e40af' }}>Claude Sonnet 5 &bull; Recommended Workhorse</strong>
-                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#1d4ed8' }}>Score: 91/100</span>
+                  <strong style={{ color: 'var(--badge-info-text)' }}>Claude Sonnet 5 &bull; Recommended Workhorse</strong>
+                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: 'var(--badge-info-text)' }}>Score: 91/100</span>
                 </div>
-                <p style={{ margin: 0, color: '#1e3a8a', lineHeight: 1.4 }}>
+                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
                   Optimal balance for daily PM engineering. High latency throughput (94%) and Standard Compute cost efficiency while maintaining 90% ISO safety rigor.
                 </p>
               </div>
 
-              <div className="ad-radar-legend-card" style={{ background: '#faf5ff', border: '1px solid #e9d5ff' }}>
+              <div className="ad-radar-legend-card" style={{ background: 'var(--badge-purple-bg)', border: '1px solid var(--badge-purple-border)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <strong style={{ color: '#6b21a8' }}>Claude Opus 5 &bull; Deep Safety Specialist</strong>
-                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#7e22ce' }}>Score: 82/100</span>
+                  <strong style={{ color: 'var(--badge-purple-text)' }}>Claude Opus 5 &bull; Deep Safety Specialist</strong>
+                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: 'var(--badge-purple-text)' }}>Score: 82/100</span>
                 </div>
-                <p style={{ margin: 0, color: '#581c87', lineHeight: 1.4 }}>
+                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
                   Highest accuracy (98%) and safety traceability (99%). Premium Compute tier justified for critical quarterly ASIL-D reviews.
                 </p>
               </div>
 
-              <div className="ad-radar-legend-card" style={{ background: '#ecfdf5', border: '1px solid #a7f3d0' }}>
+              <div className="ad-radar-legend-card" style={{ background: 'var(--badge-success-bg)', border: '1px solid var(--badge-success-border)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <strong style={{ color: '#065f46' }}>Gemini 2.5 Pro &bull; Multimodal Champion</strong>
-                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#047857' }}>Score: 89/100</span>
+                  <strong style={{ color: 'var(--badge-success-text)' }}>Gemini 2.5 Pro &bull; Multimodal Champion</strong>
+                  <span style={{ fontFamily: 'monospace', fontWeight: 800, color: 'var(--badge-success-text)' }}>Score: 89/100</span>
                 </div>
-                <p style={{ margin: 0, color: '#064e3b', lineHeight: 1.4 }}>
+                <p style={{ margin: 0, color: 'var(--text-secondary)', lineHeight: 1.4 }}>
                   Exceptional multimodal camera telemetry digestion. 2M token context window allows ingest of raw incident camera clips; sovereign EU Frankfurt endpoint.
                 </p>
               </div>
@@ -1144,9 +1144,9 @@ export default function AdModelCatalogue() {
               <thead>
                 <tr>
                   <th>Specification Dimension</th>
-                  <th style={{ color: '#1d4ed8', background: '#f0f7ff' }}>Claude Sonnet 5 (Recommended)</th>
-                  <th style={{ color: '#7e22ce', background: '#faf5ff' }}>Claude Opus 5</th>
-                  <th style={{ color: '#047857', background: '#f0fdf4' }}>Gemini 2.5 Pro</th>
+                  <th style={{ color: 'var(--badge-info-text)', background: 'var(--badge-info-bg)' }}>Claude Sonnet 5 (Recommended)</th>
+                  <th style={{ color: 'var(--badge-purple-text)', background: 'var(--badge-purple-bg)' }}>Claude Opus 5</th>
+                  <th style={{ color: 'var(--badge-success-text)', background: 'var(--badge-success-bg)' }}>Gemini 2.5 Pro</th>
                 </tr>
               </thead>
               <tbody>
@@ -1410,7 +1410,7 @@ export default function AdModelCatalogue() {
               {/* Limitations */}
               <div>
                 <div className="ad-drawer-section-title">2. Operational Limitations &amp; Blindspots</div>
-                <div style={{ padding: '12px', borderRadius: '10px', background: '#fffbeb', border: '1px solid #fef3c7', color: '#92400e', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ padding: '12px', borderRadius: '10px', background: 'var(--badge-high-bg)', border: '1px solid var(--badge-high-border)', color: 'var(--badge-high-text)', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {drawerModel.limitations.map((lim, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
                       <AlertTriangle size={13} style={{ flexShrink: 0, marginTop: '2px' }} />
@@ -1453,7 +1453,7 @@ export default function AdModelCatalogue() {
               <div>
                 <div className="ad-drawer-section-title">5. Data Residency &amp; Governance Policy</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.72rem' }}>
-                  <div style={{ padding: '8px 10px', borderRadius: '8px', background: '#eff6ff', border: '1px solid #bfdbfe', color: '#1e40af' }}>
+                  <div style={{ padding: '8px 10px', borderRadius: '8px', background: 'var(--badge-info-bg)', border: '1px solid var(--badge-info-border)', color: 'var(--badge-info-text)' }}>
                     <strong>Residency:</strong> {drawerModel.dataRestrictions}
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '8px', background: 'var(--surface-tertiary, #f8fafc)', border: '1px solid var(--border-color, #e2e8f0)', color: 'var(--text-secondary)' }}>
@@ -1530,7 +1530,7 @@ export default function AdModelCatalogue() {
                 </div>
               )}
 
-              <div style={{ padding: '10px', borderRadius: '8px', background: '#ecfdf5', border: '1px solid #a7f3d0', color: '#065f46', fontSize: '0.7rem' }}>
+              <div style={{ padding: '10px', borderRadius: '8px', background: 'var(--badge-success-bg)', border: '1px solid var(--badge-success-border)', color: 'var(--badge-success-text)', fontSize: '0.7rem' }}>
                 &check; <strong>Pre-approved:</strong> Meets all ISO 26262 compliance gates for automated requirements generation under {subscribeModalModel.costTier}.
               </div>
             </div>
@@ -1644,14 +1644,14 @@ export default function AdModelCatalogue() {
       {exceptionModalModel && (
         <div className="ad-modal-backdrop" onClick={() => setExceptionModalModel(null)}>
           <div className="ad-modal-card" onClick={(e) => e.stopPropagation()}>
-            <div className="ad-modal-header" style={{ background: '#fff1f2', borderBottomColor: '#fecdd3' }}>
+            <div className="ad-modal-header" style={{ background: 'var(--badge-critical-bg)', borderBottomColor: 'var(--badge-critical-border)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <AlertTriangle size={18} style={{ color: '#e11d48' }} />
-                <h3 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800, color: '#9f1239' }}>
+                <AlertTriangle size={18} style={{ color: 'var(--badge-critical-text)' }} />
+                <h3 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800, color: 'var(--badge-critical-text)' }}>
                   Governance Directive 2026-03 &bull; Exception Petition
                 </h3>
               </div>
-              <button onClick={() => setExceptionModalModel(null)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+              <button onClick={() => setExceptionModalModel(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)' }}>
                 <X size={16} />
               </button>
             </div>
@@ -1671,7 +1671,7 @@ export default function AdModelCatalogue() {
                 />
               </div>
 
-              <div style={{ padding: '8px 10px', borderRadius: '8px', background: '#fef2f2', border: '1px solid #fee2e2', color: '#991b1b', fontSize: '0.7rem' }}>
+              <div style={{ padding: '8px 10px', borderRadius: '8px', background: 'var(--badge-critical-bg)', border: '1px solid var(--badge-critical-border)', color: 'var(--badge-critical-text)', fontSize: '0.7rem' }}>
                 Requires unanimous sign-off by AI Safety Board and Legal Counsel.
               </div>
             </div>

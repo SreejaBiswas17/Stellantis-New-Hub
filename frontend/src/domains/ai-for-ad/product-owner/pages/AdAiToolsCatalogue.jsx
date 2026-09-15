@@ -1141,19 +1141,20 @@ tool_integration:
               {/* Support Lead Info */}
               <div className="ad-tools-drawer-section">
                 <span className="ad-tools-drawer-label">Designated Support Owner</span>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-color)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#0b1a30', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 800 }}>
+                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--bg-surface-elevated, #0b1a30)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 800, border: '1px solid var(--border-color)' }}>
                       {activeDrawerTool.ownerName.charAt(0)}
                     </div>
                     <div>
-                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: '#0f172a' }}>{activeDrawerTool.ownerName}</div>
-                      <div style={{ fontSize: '0.68rem', color: '#64748b' }}>{activeDrawerTool.ownerEmail}</div>
+                      <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--text-primary)' }}>{activeDrawerTool.ownerName}</div>
+                      <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>{activeDrawerTool.ownerEmail}</div>
                     </div>
                   </div>
                   <button
                     onClick={() => showToast(`Opened internal chat ticket to ${activeDrawerTool.ownerEmail}`, Mail)}
-                    style={{ padding: '5px 10px', borderRadius: '8px', border: '1px solid #cbd5e1', backgroundColor: '#ffffff', fontSize: '0.7rem', fontWeight: 600, color: '#334155', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                    className="ad-tool-btn-guide"
+                    style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.7rem' }}
                   >
                     <Mail size={13} />
                     <span>Contact Lead</span>
@@ -1164,7 +1165,7 @@ tool_integration:
               {/* Usage & Adoption Readout */}
               <div className="ad-tools-drawer-section">
                 <span className="ad-tools-drawer-label">Adoption &amp; Usage Telemetry</span>
-                <div style={{ padding: '10px 14px', borderRadius: '10px', backgroundColor: '#f0f9ff', border: '1px solid #bae6fd', fontSize: '0.75rem', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: '#0369a1' }}>
+                <div style={{ padding: '10px 14px', borderRadius: '10px', backgroundColor: 'var(--badge-info-bg)', border: '1px solid var(--badge-info-border)', fontSize: '0.75rem', fontFamily: 'JetBrains Mono, monospace', fontWeight: 700, color: 'var(--badge-info-text)' }}>
                   {activeDrawerTool.metrics}
                 </div>
               </div>
@@ -1264,8 +1265,8 @@ tool_integration:
                 />
               </div>
 
-              <div style={{ padding: '10px 12px', borderRadius: '8px', backgroundColor: '#f8fafc', border: '1px solid #e2e8f0', fontSize: '0.7rem', color: '#475569' }}>
-                <div style={{ fontWeight: 700, color: '#0f172a', marginBottom: '2px' }}>Approval Routing:</div>
+              <div style={{ padding: '10px 12px', borderRadius: '8px', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-color)', fontSize: '0.7rem', color: 'var(--text-secondary)' }}>
+                <div style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: '2px' }}>Approval Routing:</div>
                 Request will be routed to <strong>{subscribeModalTool.ownerName}</strong> ({subscribeModalTool.ownerEmail}) under <strong>{subscribeModalTool.licensing}</strong>. Standard SLA: 24–48 hours.
               </div>
 
@@ -1325,7 +1326,7 @@ tool_integration:
   security_tier: "${guideModalTool.security.toUpperCase()}"`}
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', borderRadius: '8px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', fontSize: '0.72rem', color: '#166534' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', borderRadius: '8px', backgroundColor: 'var(--badge-success-bg)', border: '1px solid var(--badge-success-border)', fontSize: '0.72rem', color: 'var(--badge-success-text)' }}>
                 <span>Certified for ASIL-D production build gating.</span>
                 <span style={{ fontFamily: 'JetBrains Mono', fontWeight: 700 }}>v{guideModalTool.edition.split('v')[1] || '1.0'}</span>
               </div>

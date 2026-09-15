@@ -5,6 +5,39 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   AI Experience Zone Scoped Tokens (Domain Specific, Zero Common File Footprint)
+   -------------------------------------------------------------------------- */
+.ad-exp-subtab-bar,
+.ad-persona-container,
+.ad-pm-inbox-container,
+.ad-models-container,
+.ad-agents-container,
+.ad-tools-container,
+.ad-subs-container {
+  --surface-primary: var(--bg-surface);
+  --surface-secondary: var(--bg-surface-secondary);
+  --surface-tertiary: var(--bg-subtle);
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --shadow-xs: 0 1px 2px rgba(14, 30, 56, 0.05);
+}
+
+[data-theme="dark"] .ad-exp-subtab-bar,
+[data-theme="dark"] .ad-persona-container,
+[data-theme="dark"] .ad-pm-inbox-container,
+[data-theme="dark"] .ad-models-container,
+[data-theme="dark"] .ad-agents-container,
+[data-theme="dark"] .ad-tools-container,
+[data-theme="dark"] .ad-subs-container {
+  --surface-primary: var(--bg-surface);
+  --surface-secondary: var(--bg-surface-secondary);
+  --surface-tertiary: var(--bg-subtle);
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* --------------------------------------------------------------------------
    Experience Zone Sub-Tabs Navigation Track
    -------------------------------------------------------------------------- */
 /* --------------------------------------------------------------------------
