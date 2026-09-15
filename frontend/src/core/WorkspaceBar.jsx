@@ -318,10 +318,20 @@ function CustomSelect({ label, value, onChange, options, minWidth = '180px' }) {
   );
 }
 
-export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedRole, onRoleChange }) {
+export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedRole, onRoleChange, allowedDomains = [], allowedRoles = [] }) {
   const handleRoleSelect = (role) => {
     onRoleChange(role);
   };
+
+  // Filter available domains based on user's allowed domains
+  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value));
+  
+  // Fallback to all if somehow allowedDomains is empty to prevent crashes
+  const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;
+
+  // Filter available roles based on user's allowed roles
+  const availableRoles = (DOMAIN_ROLE_MAP[selectedDomain] || []).filter(opt => allowedRoles.includes(opt.value));
+  const displayRoles = availableRoles.length > 0 ? availableRoles : (DOMAIN_ROLE_MAP[selectedDomain] || []);
 
   return (
     <div style={{
@@ -351,7 +361,7 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
           label="Domain:"
           value={selectedDomain}
           onChange={onDomainChange}
-          options={DOMAIN_OPTIONS}
+          options={displayDomains}
           minWidth="170px"
         />
 
@@ -360,7 +370,7 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
           label="Role:"
           value={selectedRole}
           onChange={handleRoleSelect}
-          options={DOMAIN_ROLE_MAP[selectedDomain] || []}
+          options={displayRoles}
           minWidth="180px"
         />
       </div>

@@ -12,7 +12,6 @@ const DOMAIN_ROLE_MAP = {
 
 const DOMAINS = Object.keys(DOMAIN_ROLE_MAP);
 
-// ── Feature cards for left panel
 const FEATURES = [
   {
     icon: '💻',
@@ -25,19 +24,9 @@ const FEATURES = [
     text: <><strong>AI for AMS:</strong> Specialized desks for Support Engineer &amp; Software Engineer — powering ticket triage, RCA diagnostics, PRD generator &amp; SLA watch.</>,
   },
   {
-    icon: '📊',
+    icon: '🛡️',
     cls: 'icon-infra',
-    text: <><strong>AI for Infra:</strong> Intelligence for Infra Engineer, SRE Lead &amp; NOC Lead.</>,
-  },
-  {
-    icon: '🔄',
-    cls: 'icon-mod',
-    text: <><strong>AI for Modernization:</strong> Workspaces for AI Architect &amp; Modernization Engineer accelerating legacy-to-cloud transformation with automated code refactoring and zero-downtime pipelines.</>,
-  },
-  {
-    icon: '⚡',
-    cls: 'icon-data',
-    text: <><strong>AI for Data Engineering:</strong> Workspaces for Data Architect &amp; Data Scientist featuring automated ETL pipelines, lakehouse governance, and predictive ML models.</>,
+    text: <><strong>Engineering leaders:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
   },
 ];
 

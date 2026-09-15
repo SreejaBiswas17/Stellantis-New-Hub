@@ -29,7 +29,7 @@ function AuthenticatedApp() {
 
   const [selectedDomain, setSelectedDomain] = useState(allowedDomains[0]);
   const [selectedRole, setSelectedRole] = useState(allowedRoles[0]);
-  const [activeTab, setActiveTab] = useState('dashboard');
+
 
   // Toggle theme and update data-theme attribute on document root
   const toggleTheme = () => {
@@ -80,6 +80,8 @@ function AuthenticatedApp() {
             setSelectedRole(role);
             setActiveTab('dashboard');
           }}
+          allowedDomains={allowedDomains}
+          allowedRoles={allowedRoles}
         />
 
         {/* Persona Hero Context Banner & High-Level KPIs */}

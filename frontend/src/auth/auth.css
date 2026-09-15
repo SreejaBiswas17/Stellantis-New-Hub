@@ -110,7 +110,7 @@
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.55;
-  margin: -16px 0 0 0;
+  margin: 12px 0 0 0;
 }
 
 /* Feature cards (AI domain entries) */
@@ -150,6 +150,7 @@
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.45;
   padding-top: 2px;
+  margin: 0;
 }
 
 .auth-feature-text strong {

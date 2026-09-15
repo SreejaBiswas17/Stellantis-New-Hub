@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Eye, EyeOff, AlertCircle, Clock, CheckCircle, ChevronDown } from 'lucide-react';
 import { useAuth } from './AuthContext';
 import './auth.css';
@@ -70,71 +70,13 @@ function MultiSelectDropdown({ label, options, selectedValues, onChange, placeho
   );
 }
 
-function MultiSelectDropdown({ label, options, selectedValues, onChange, placeholder, disabled }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef(null);
-  
-  useEffect(() => {
-    function handleClickOutside(e) { if (ref.current && !ref.current.contains(e.target)) setIsOpen(false); }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
-  const handleToggle = (val) => {
-    if (selectedValues.includes(val)) onChange(selectedValues.filter(v => v !== val));
-    else onChange([...selectedValues, val]);
-  };
-
-  return (
-    <div className="auth-field-group" ref={ref} style={{ position: 'relative' }}>
-      <label className="auth-label">{label}</label>
-      <div 
-        className={`auth-input ${disabled ? 'disabled' : ''}`} 
-        style={{ 
-          cursor: disabled ? 'not-allowed' : 'pointer', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          background: disabled ? 'var(--bg-subtle, #f8f9fa)' : 'transparent',
-          opacity: disabled ? 0.6 : 1
-        }} 
-        onClick={() => !disabled && setIsOpen(!isOpen)}
-      >
-        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: selectedValues.length ? 'inherit' : 'var(--text-muted)' }}>
-          {selectedValues.length === 0 ? placeholder : selectedValues.join(', ')}
-        </span>
-        <ChevronDown size={14} style={{ flexShrink: 0, color: 'var(--text-muted)' }} />
-      </div>
-      {isOpen && !disabled && (
-        <div style={{
-          position: 'absolute', top: '100%', left: 0, marginTop: '4px', zIndex: 10, width: '100%',
-          background: 'var(--bg-surface, #ffffff)', border: '1px solid var(--border-color, #e2e8f4)',
-          borderRadius: '8px', padding: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        }}>
-          {options.length === 0 ? <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', padding: '4px' }}>No options available</div> : options.map(opt => (
-            <label key={opt} style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 6px', cursor: 'pointer', fontSize: '0.85rem', color: 'var(--text-primary)' }}>
-              <input 
-                type="checkbox" 
-                checked={selectedValues.includes(opt)} 
-                onChange={() => handleToggle(opt)} 
-                style={{ cursor: 'pointer', accentColor: '#1a3a6e' }}
-              />
-              {opt}
-            </label>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // ── Feature cards (shorter text for register panel)
 const FEATURES = [
   { icon: '💻', cls: 'icon-ad',    text: <><strong>AI for AD:</strong> Workspaces for Product Owner &amp; Developer</> },
   { icon: '🔧', cls: 'icon-ams',   text: <><strong>AI for AMS:</strong> Incident &amp; problem desks for Support Engineer &amp; Software Engineer</> },
-  { icon: '📊', cls: 'icon-infra', text: <><strong>AI for Infra:</strong> Intelligence for Infra Engineer, SRE Lead &amp; NOC Lead</> },
-  { icon: '🔄', cls: 'icon-mod',   text: <><strong>AI for Modernization:</strong> Workspaces for AI Architect &amp; Modernization Engineer accelerating legacy-to-cloud transformation with automated code refactoring and zero-downtime pipelines.</> },
-  { icon: '⚡', cls: 'icon-data',  text: <><strong>AI for Data Engineering:</strong> Workspaces for Data Architect &amp; Data Scientist featuring automated ETL pipelines, lakehouse governance, and predictive ML models.</> },
+  { icon: '🛡️', cls: 'icon-infra', text: <><strong>Engineering leaders:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy</> }
 ];
 
 // ── Pending Approval Screen (shown after successful registration)
@@ -298,7 +240,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
     );
   }
 
-  const roleOptions = domain ? (DOMAIN_ROLE_MAP[domain] || []) : [];
+
 
   return (
     <div className="auth-root">
