@@ -31,6 +31,7 @@ export default function App() {
   // When domain changes, automatically sync default role
   const handleDomainChange = (domain) => {
     setSelectedDomain(domain);
+    setActiveTab('dashboard');
     const persona = DOMAIN_PERSONA_MAP[domain];
     if (persona) {
       setSelectedRole(persona.role);
@@ -55,7 +56,10 @@ export default function App() {
           selectedDomain={selectedDomain}
           onDomainChange={handleDomainChange}
           selectedRole={selectedRole}
-          onRoleChange={setSelectedRole}
+          onRoleChange={(role) => {
+            setSelectedRole(role);
+            setActiveTab('dashboard');
+          }}
         />
 
         {/* Persona Hero Context Banner & High-Level KPIs */}

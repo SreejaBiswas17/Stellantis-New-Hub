@@ -1,11 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Sun, Moon, ChevronDown, ShieldCheck, UserCheck } from 'lucide-react';
 
 const isLight = (theme) => theme === 'light';
 
 export default function Header({ currentTheme, toggleTheme, activePersona }) {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const light = isLight(currentTheme);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProfileDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // In light mode: white header with navy text. In dark mode: deep navy header with white text.
   const headerBg        = light ? '#ffffff' : '#0e1e38';
@@ -95,7 +106,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
         </button>
 
         {/* User Profile Dropdown */}
-        <div style={{ position: 'relative' }}>
+        <div ref={dropdownRef} style={{ position: 'relative' }}>
           <button
             onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
             style={{

@@ -75,16 +75,16 @@ export const DOMAIN_PERSONA_MAP = {
 
 const DOMAIN_OPTIONS = [
   {
-    value: 'AI for AMS',
-    label: 'AI for AMS',
-    subtitle: 'Application Management Services',
-    icon: Server
-  },
-  {
     value: 'Engineering leaders',
     label: 'Engineering leaders',
     subtitle: 'Architecture & AI Governance',
     icon: Brain
+  },
+  {
+    value: 'AI for AMS',
+    label: 'AI for AMS',
+    subtitle: 'Application Management Services',
+    icon: Server
   },
   {
     value: 'AI for AD',
@@ -94,31 +94,32 @@ const DOMAIN_OPTIONS = [
   }
 ];
 
-const ROLE_OPTIONS = [
-  {
-    value: 'Head of AMS',
-    label: 'Head of AMS',
-    subtitle: 'Tony • Operations & Triage',
-    icon: User
-  },
-  {
-    value: 'Chief AI Officer',
-    label: 'Chief AI Officer',
-    subtitle: 'Alex • Architecture & Governance',
-    icon: ShieldCheck
-  },
-  {
-    value: 'Product Owner',
-    label: 'Product Owner',
-    subtitle: 'Product Owner • Backlog & Epics',
-    icon: UserCheck
-  }
-];
-
-const ROLE_TO_DOMAIN_MAP = {
-  'Head of AMS': 'AI for AMS',
-  'Chief AI Officer': 'Engineering leaders',
-  'Product Owner': 'AI for AD'
+// Domain-scoped roles — to add a new role, push into the relevant domain's array
+const DOMAIN_ROLE_MAP = {
+  'Engineering leaders': [
+    {
+      value: 'Chief AI Officer',
+      label: 'Chief AI Officer',
+      subtitle: 'Alex • Architecture & Governance',
+      icon: ShieldCheck
+    }
+  ],
+  'AI for AMS': [
+    {
+      value: 'Head of AMS',
+      label: 'Head of AMS',
+      subtitle: 'Tony • Operations & Triage',
+      icon: User
+    }
+  ],
+  'AI for AD': [
+    {
+      value: 'Product Owner',
+      label: 'Product Owner',
+      subtitle: 'Product Owner • Backlog & Epics',
+      icon: UserCheck
+    }
+  ]
 };
 
 /**
@@ -320,10 +321,6 @@ function CustomSelect({ label, value, onChange, options, minWidth = '180px' }) {
 export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedRole, onRoleChange }) {
   const handleRoleSelect = (role) => {
     onRoleChange(role);
-    const correspondingDomain = ROLE_TO_DOMAIN_MAP[role];
-    if (correspondingDomain && correspondingDomain !== selectedDomain) {
-      onDomainChange(correspondingDomain);
-    }
   };
 
   return (
@@ -363,7 +360,7 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
           label="Role:"
           value={selectedRole}
           onChange={handleRoleSelect}
-          options={ROLE_OPTIONS}
+          options={DOMAIN_ROLE_MAP[selectedDomain] || []}
           minWidth="180px"
         />
       </div>
